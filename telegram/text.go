@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"errors"
 
-	"github.com/fominvic81/scheduleBot/db"
+	"github.com/fominvic81/schedule-bot/db"
 	tele "gopkg.in/telebot.v3"
 )
 

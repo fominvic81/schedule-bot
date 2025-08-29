@@ -5,8 +5,8 @@ import (
 	"hash/fnv"
 	"slices"
 
-	"github.com/fominvic81/scheduleBot/api"
-	"github.com/fominvic81/scheduleBot/db"
+	"github.com/fominvic81/schedule-bot/api"
+	"github.com/fominvic81/schedule-bot/db"
 
 	tele "gopkg.in/telebot.v3"
 )

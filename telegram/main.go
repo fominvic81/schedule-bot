@@ -5,7 +5,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/fominvic81/scheduleBot/api"
+	"github.com/fominvic81/schedule-bot/api"
 	tele "gopkg.in/telebot.v3"
 )
 

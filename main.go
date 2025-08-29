@@ -4,8 +4,8 @@ import (
 	"log"
 	"runtime/debug"
 
-	"github.com/fominvic81/scheduleBot/db"
-	"github.com/fominvic81/scheduleBot/telegram"
+	"github.com/fominvic81/schedule-bot/db"
+	"github.com/fominvic81/schedule-bot/telegram"
 
 	"os"
 

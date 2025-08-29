@@ -1,4 +1,4 @@
-module github.com/fominvic81/scheduleBot
+module github.com/fominvic81/schedule-bot
 
 go 1.23.0
 

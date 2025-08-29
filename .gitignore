@@ -4,6 +4,6 @@ data
 db.sqlite
 tmp
 logs.txt
-scheduleBot
+schedule-bot
 .idea
 dist/
