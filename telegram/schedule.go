@@ -166,7 +166,6 @@ func SendSchedule(c tele.Context, message *tele.Message, withGroups bool, format
 		texts := formatter(c, &day, withGroups)
 
 		messageIdsToDelete := []string{}
-		var msg *tele.Message
 		for j, text := range texts {
 			lastIteration := j == len(texts)-1
 
@@ -175,13 +174,16 @@ func SendSchedule(c tele.Context, message *tele.Message, withGroups bool, format
 				markup = GetDayMarkup(c, day.Date, messageIdsToDelete)
 			}
 
+			var msg *tele.Message
 			if message != nil && start.Day() == end.Day() {
-				msg, err = c.Bot().Edit(message, text, tele.ModeMarkdownV2, markup)
-			} else {
-				msg, err = c.Bot().Send(c.Recipient(), text, tele.ModeMarkdownV2, markup)
+				if msg, err = c.Bot().Edit(message, text, tele.ModeMarkdownV2, markup); err != nil && !errors.Is(err, tele.ErrSameMessageContent) {
+					return err
+				}
 			}
-			if err != nil && !errors.Is(err, tele.ErrSameMessageContent) {
-				return err
+			if msg == nil {
+				if msg, err = c.Bot().Send(c.Recipient(), text, tele.ModeMarkdownV2, markup); err != nil {
+					return err
+				}
 			}
 			schedule[i].MessageIds = append(schedule[i].MessageIds, msg.ID)
 			if !lastIteration {

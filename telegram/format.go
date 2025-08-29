@@ -14,8 +14,7 @@ import (
 type Formatter func(c tele.Context, day *api.Day, withGroups bool) []string
 
 func Escape(msg string) string {
-	r, _ := regexp.Compile("([\\*\\_\\~\\|\\[\\]\\(\\)\\>\\-\\!\\.\\`])")
-	return r.ReplaceAllString(msg, "\\$1")
+	return regexp.MustCompile("([\\*\\_\\~\\|\\[\\]\\(\\)\\>\\-\\!\\.\\`\\#])").ReplaceAllString(msg, "\\$1")
 }
 
 func FormatDay(c tele.Context, day *api.Day, withGroups bool) []string {
